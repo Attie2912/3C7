@@ -24,7 +24,7 @@ module Negative(in, x);
 	output wire [7:0] x;
 	
 	Not negative_unit (.in(in), .x(x_1));
-
+	eightbitAdder negative_total(
 	x = x_1 + ;
 
 endmodule
