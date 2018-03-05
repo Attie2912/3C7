@@ -24,13 +24,13 @@ module Bitwise(a, b, x);
 	output wire [7:0] x;
 	
 	assign x[0] = a[0]^b[0];
-	assign x[1] = a[0]^b[0];
-	assign x[2] = a[0]^b[0];
-	assign x[3] = a[0]^b[0];
-	assign x[4] = ~in[4];
-	assign x[5] = ~in[5];
-	assign x[6] = ~in[6];
-	assign x[7] = ~in[7];
+	assign x[1] = a[1]^b[1];
+	assign x[2] = a[2]^b[2];
+	assign x[3] = a[3]^b[3];
+	assign x[4] = a[4]^b[4];
+	assign x[5] = a[5]^b[5];
+	assign x[6] = a[6]^b[6];
+	assign x[7] = a[7]^b[7];
 	 
 
 endmodule
