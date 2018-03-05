@@ -23,8 +23,10 @@ module Negative(in, x);
 	wire [7:0] x_1;
 	output wire [7:0] x;
 	
+	assign y = 8'b00000001;
+	wire cout, overflow, sum;
 	Not negative_unit (.in(in), .x(x_1));
-	eightbitAdder negative_total(
-	x = x_1 + ;
+	eightbitAdder negative_total(.x(x_1), .y(y), .cin(0), .overflow(overflow), .cout(cout), .sum(sum));
+	assign x = sum;
 
 endmodule
