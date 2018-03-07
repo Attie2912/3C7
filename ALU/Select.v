@@ -18,20 +18,21 @@
 // Additional Comments: 
 //
 //////////////////////////////////////////////////////////////////////////////////
-module Select(select, a, b, negative_A, negative_B, ror_A, ror_B, LT, bitwise, not_A, not_B, subtract, add, x);
+module Select(select, a, b, x);
 	input wire [3:0] select;
-	input wire [7:0] a, b, negative_A, negative_B, ror_A, ror_B, LT, bitwise, not_A, not_B, subtract, add;
+	input wire [7:0] a, b /*negative_A, negative_B, ror_A, ror_B, LT, bitwise, not_A, not_B, subtract, add*/;
 	output reg[7:0] x;
+	wire [7:0] negative_A, negative_B, ror_A, ror_B, LT, bitwise, not_A, not_B, subtract, add;
   
-  /*Negative negative_a(.in(a), .x(negative_A));
+  Negative negative_a(.in(a), .x(negative_A));
   Negative negative_b(.in(b), .x(negative_B));
-  BarrelShift rorA(.a(a), .amt(4'b0100), .y(ror_A), .direction(1'b0));
-  BarrelShift rorA(.a(b), .amt(4'b0100), .y(ror_B), .direction(1'b0));
+  BarrelShift rorA(.a(a), .amt(3'b100), .y(ror_A), .direction(1'b0));
+  BarrelShift rorB(.a(b), .amt(3'b100), .y(ror_B), .direction(1'b0));
   lt2 lessthan(.a(a), .b(b), .aeqb2(LT));
   Bitwise bitwise1(.a(a), .b(b), .x(bitwise));
   Not not1(.in(a), .x(not_A));
   Not not2(.in(b), .x(not_B));
-  Subtract(.a(a), .b(b), .x(subtract));*/
+  //Subtract(.a(a), .b(b), .x(subtract));
   
   
   //this is not the right syntax for case statement
