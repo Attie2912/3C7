@@ -20,8 +20,19 @@
 //////////////////////////////////////////////////////////////////////////////////
 module Select(select, a, b, negative_A, negative_B, ror_A, ror_B, LT, bitwise, not_A, not_B, subtract, add, x);
 	input wire [3:0] select;
-  input wire [7:0] a, b, negative_A, negative_B, ror_A, ror_B, LT, bitwise, not_A, not_B, subtract, add;
-  output wire [7:0] x;
+	input wire [7:0] a, b, negative_A, negative_B, ror_A, ror_B, LT, bitwise, not_A, not_B, subtract, add;
+	output reg[7:0] x;
+  
+  /*Negative negative_a(.in(a), .x(negative_A));
+  Negative negative_b(.in(b), .x(negative_B));
+  BarrelShift rorA(.a(a), .amt(4'b0100), .y(ror_A), .direction(1'b0));
+  BarrelShift rorA(.a(b), .amt(4'b0100), .y(ror_B), .direction(1'b0));
+  lt2 lessthan(.a(a), .b(b), .aeqb2(LT));
+  Bitwise bitwise1(.a(a), .b(b), .x(bitwise));
+  Not not1(.in(a), .x(not_A));
+  Not not2(.in(b), .x(not_B));
+  Subtract(.a(a), .b(b), .x(subtract));*/
+  
   
   //this is not the right syntax for case statement
    always@*
@@ -36,12 +47,12 @@ module Select(select, a, b, negative_A, negative_B, ror_A, ror_B, LT, bitwise, n
 		4'b0110: x = ror_B;
 		4'b0111: x = LT;
 		4'b1000: x = bitwise;
-		4'b1001: x = Not_A;
-		4'b1010: x = Not_B;
+		4'b1001: x = not_A;
+		4'b1010: x = not_B;
 		4'b1011: x = subtract;
 		4'b1100: x = add;
 		4'b1111: x = 8'b11111111;
-		
+		default: x = 8'b10000001;
 		endcase
 	end
 endmodule
