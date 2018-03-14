@@ -11,7 +11,7 @@ output reg tick
 	// signal declaration
 	reg [1:0] state_next, state_reg;
 	
-		always @(posedge clk, posedge reset)
+		always @(posedge clk)
 		if (reset)
 		state_reg <= A;
 		else
