@@ -21,35 +21,46 @@
 module LightControl(
 	input wire clk,
 	input wire reset,
+	output reg tick, 
 	output reg red, green, yellow
     );
 
 	// signal declaration
-	reg [3:0] timer;
-	reg [1:0] state_next, state_reg; 
+	reg [3:0] timer = 4'b0000;	
+	reg [2:0] state_next, state_reg; 
 	
 	//define local parameters
 		localparam [2:0] Red = 3'b000;
 		localparam [2:0] Green = 3'b010;
 		localparam [2:0] Yellow = 3'b001;
 		
+		// state register
 		always @(posedge clk, posedge reset)
 		if (reset)
-		state_reg <= Red;
+			begin
+			state_reg <= Red;
+			timer <= 4'b0000;
+			//tick <= 1'b1;
+			end
 		else
+		begin
 		state_reg <= state_next;
-		
-	// state register
+		//tick <= 1'b1;
+		end
+
 		// next-state logic and output logic
 		always @*
 			begin
-			state_next = state_reg; // default state: the same
-
+			state_next <= state_reg; // default state: the same
+			tick <= 1'b1;
+			//timer <= timer + 1; 
 		case(state_reg)
 			 Red : if (timer < 4'b1010)   //keep red on for 10 seconds, then move to green
 			 begin								//if timer is less than 10 continue in red state
 				state_next <= Red;
 				timer <= timer + 4'b0001;
+				 red=1; yellow=0; green=0; 
+			 //tick <= 1'b1;
 			end
 				else
 				begin									//else move to green amd reset timer 	
@@ -61,11 +72,12 @@ module LightControl(
 			 begin
 				 state_next <= Green;			//if timer is less than 4 continue in red state
 				 timer <= timer + 4'b0001;
-				 end
+			end
 				 else
 				begin
 				timer <= 4'b0000;
 				 state_next <= Yellow;
+				  
 				end
 			 Yellow : if(timer < 4'b0011) //keep red on for 3 seconds, then move to red
 					begin							//if timer is less than 10 continue in red state
@@ -83,7 +95,7 @@ module LightControl(
 						state_next = Red ;
 						end
 		endcase
-	end
+		end
 	
 	  always @* 
 	  begin
