@@ -52,7 +52,7 @@ localparam [1:0] Red = 2'b00,
 		// next-state logic and output logic
 		always @*
 			begin
-			state_next <= state_reg; // default state: the same
+			state_next = state_reg; // default state: the same
 			//tick <= 1'b1;
 			reset_next = 1'b0;
 	
@@ -72,7 +72,7 @@ localparam [1:0] Red = 2'b00,
 			//	end
 				
 				Red:	//red for 6
-		if(clk)
+		//if(clk)
 			begin
 				green = 1'b0;
 				red = 1'b1;
@@ -136,7 +136,7 @@ localparam [1:0] Red = 2'b00,
 			//	  end
 				  
 				  Yellow:	//yellow for 2
-		if(clk)
+		//if(clk)
 			begin
 					green = 1'b0;
 					red = 1'b0;
@@ -158,7 +158,7 @@ localparam [1:0] Red = 2'b00,
 			 
 			 default :               
 						begin
-						state_next = Red ;
+						state_next = Green ;
 						end
 		endcase
 		end
