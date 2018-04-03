@@ -1,0 +1,5 @@
+verilog work "Max_Tick.v"
+verilog work "LightControl.v"
+verilog work "FSM.v"
+verilog work "FSM_tb.v"
+verilog work "C:/xilinx/13.4/ISE_DS/ISE//verilog/src/glbl.v"

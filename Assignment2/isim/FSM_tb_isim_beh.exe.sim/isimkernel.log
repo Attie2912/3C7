@@ -1,0 +1,10 @@
+Command line:
+   FSM_tb_isim_beh.exe
+     -simmode  gui
+     -simrunnum  0
+     -socket  52695
+
+Tue Apr 03 21:26:50 2018
+
+
+ Elaboration Time: 0.1092 sec

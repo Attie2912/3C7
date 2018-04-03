@@ -1,0 +1,3 @@
+verilog isim_temp "LightControl.v"
+verilog isim_temp "LightControl_tb.v"
+verilog isim_temp "C:/xilinx/13.4/ISE_DS/ISE//verilog/src/glbl.v"
