@@ -165,14 +165,20 @@
 #CONFIG PROHIBIT = L5;
 #CONFIG PROHIBIT = R4;
 
+#LIGHTS
 NET "red" 		LOC = A4;
 NET "yellow" 	LOC = C5;
 NET "green" 	LOC = D5;
+NET "walk" 		LOC = F12;
+NET "dont_walk" LOC = E12;
 
 #clock oscillator
 NET "clk"	LOC = "C9";
 NET "clk"	PERIOD = 20.0ns HIGH 40%;
-NET "reset"		LOC = "D18";
 
-NET "clk_out"	LOC = F9;
+#BUTTON PRESS
+NET "reset"		LOC = "D18";
+NET "pedestrian" LOC = "V4"
+
+NET "clk_out"	LOC = E9;
 
