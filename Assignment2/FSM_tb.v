@@ -20,11 +20,11 @@
 //////////////////////////////////////////////////////////////////////////////////
 module FSM_tb;
 
-	reg clk, reset;
-	wire red, yellow, green;
+	reg clk, reset, pedestrian;
+	wire red, yellow, green, walk, dont_walk;
    // instantiate the circuit under test
 	FSM uut
-  (.clk(clk), .reset(reset), .red(red), .yellow(yellow), .green(green));
+  (.clk(clk), .reset(reset), .pedestrian(pedestrian),  .red(red), .yellow(yellow), .green(green), .walk(walk), .dont_walk(dont_walk));
    //  test vector generator
 	initial		
    begin
@@ -37,10 +37,14 @@ module FSM_tb;
 	initial
 	begin
 		reset = 1'b1;
+		pedestrian = 1'b0;
 		#80
 		reset = ~reset;
-		//#50
-		//reset = ~reset;
+		#700
+		pedestrian = 1'b1;
+		#10
+		pedestrian = 1'b0;
+		
 	end
    initial $monitor(clk,, reset,,red,,yellow,,green);
 endmodule
