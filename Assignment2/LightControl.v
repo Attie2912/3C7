@@ -20,9 +20,9 @@
 //////////////////////////////////////////////////////////////////////////////////
 module LightControl(
 	input wire clk,
-	input wire reset, max_r, max_y, max_g,
+	input wire reset, max_r, max_y, max_g, pedestrian, 
 	//output reg tick, 
-	output reg red, green, yellow
+	output reg red, green, yellow, walk, dont_walk
     );
 
 	// signal declaration
@@ -77,10 +77,17 @@ localparam [1:0] Red = 2'b00,
 				green = 1'b0;
 				red = 1'b1;
 				yellow = 1'b0;
+				dont_walk = 1'b0;
+				walk = 1'b1;
+				
 			//	if (q < 4'b0101)
 				//if(ped)
 				//	state_reg <=R;
 				//else
+			if(pedestrian)
+				state_reg <=Red;
+				
+			else
 				begin
 				if (max_r)
 					begin
@@ -110,9 +117,15 @@ localparam [1:0] Red = 2'b00,
 				green = 1'b1;
 				red = 1'b0;
 				yellow = 1'b0;
+				dont_walk = 1'b1;
+				walk = 1'b0;
 			//if(ped)
 			//	state_reg <=R;
 			//else
+			if(pedestrian)
+				state_reg <=Yellow;
+			else
+			
 			begin
 				if (max_g)	
 					begin
@@ -141,10 +154,15 @@ localparam [1:0] Red = 2'b00,
 					green = 1'b0;
 					red = 1'b0;
 					yellow = 1'b1;
+					dont_walk = 1'b0;
+					walk = 1'b1;
 				//if (q < 4'b0001)
 				//if(ped)
 				//	state_reg <=R;	
 				//else
+				if(pedestrian)
+				state_reg <=Yellow;
+				else
 				begin
 					if (max_y)
 						begin
