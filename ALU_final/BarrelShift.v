@@ -1,9 +1,6 @@
 `timescale 1ns / 1ps
 //////////////////////////////////////////////////////////////////////////////////
-// Company: 
-// Engineer: Sophie Hegarty
 // 
-// Create Date:    18:14:51 02/06/2018 
 // Design Name: 
 // Module Name:    BarrelShift 
 // Project Name: 
